@@ -13,15 +13,19 @@ print()
 
 class Game:
     def __init__(self):
-        self.board = [['X','X','X'],['X','X','X'],['X','X','X']]
+        self.board = [[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']]
     
     def __repr__(self):
+        board = ''
         for i in range(3):
-            row = []
+            row = ''
             for j in range(3):
-                row.append(f"{self.board[i][j]} | ")
-                row = ''.join(row)
-            print(row)
+                row += f" {self.board[i][j]} "
+                if j < 2:
+                    row += "|"
+            board += f"{row}\n"
+
+        return board
 
 def main():
     board = Game()
