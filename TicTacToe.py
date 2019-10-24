@@ -1,15 +1,12 @@
 
 class Player:
-	def __init__(self, name, token):
-		self.name = name
-		self.token = token 
+    def __init__(self, name, token, num):
+        self.name = name
+        self.token = token
+        self.num = num
 
-print()
-
-		
-
-
-
+    def __repr__(self):
+        return f'Player {self.num}\'s name is {self.name} and their token is {self.token}'
 
 class Game:
     def __init__(self):
@@ -32,5 +29,20 @@ def main():
 
     print(board)
 
+    
+    name1 = input('What is Player 1\'s name?: ')
+    token1 = 'X'
+    name2 = input('What is Player 2\'s name?: ')
+    token2 = 'O'
+
+
+
+    player_1 = Player(name1, token1, '1')
+    player_2 = Player(name2, token2, '2')
+   
+    print(player_1)
+    print(player_2)
+    
 main()
+    
 
