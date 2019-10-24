@@ -17,8 +17,11 @@ class Game:
     
     def __repr__(self):
         for i in range(3):
+            row = []
             for j in range(3):
-                print(f"{i}, {j}")
+                row.append(f"{self.board[i][j]} | ")
+                row = ''.join(row)
+            print(row)
 
 def main():
     board = Game()
