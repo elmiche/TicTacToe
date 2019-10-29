@@ -13,6 +13,7 @@ class Game:
 
     def __init__(self):
         self.board = [[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']]
+
     
     def __repr__(self):
         board = ''
@@ -43,13 +44,13 @@ class Game:
                     continue
         return full
 
+
 game = Game()
 print(game.is_full())
 
 
 def main():
     game = Game()
-
     print(game)
 
     
@@ -65,22 +66,29 @@ def main():
     print(player_1)
     print(player_2)
 
-#TODO print position on board
-    x = int(input('enter x:'))
-    y = int(input('enter y:'))
-#replace with token
-#
-    valid_move = game.move(x, y, player_1.token) # think self.token at player_1.token
-    if valid_move: 
-        print(game)
-    else:
-        print('Invalid Move')
+                                    #TODO print position on board
+                                    #TODO need winner
+                                    #TODO print 'Invalid move' if user types invalid coordinates instead of exiting the program
 
+    n_moves = 0
+    
+    while game.is_full() == False:
+        if n_moves % 2 == 0:  #If this is an even number (no remainder) '% 2 == 0'
+            player_up = player_1
+        else:
+            player_up = player_2
+        n_moves += 1                     
 
-
-
-
-
+        print(f'{player_up.name}\'s move')
+        x = int(input('enter x:'))
+        y = int(input('enter y:'))
+                                                         #replace with token
+        valid_move = game.move(x, y, player_up.token)  # think self.token at player_up.token
+        if valid_move: 
+            print(game)
+        else:
+            print('Invalid Move')
+    print('Game is full')    
 main()
     
 
