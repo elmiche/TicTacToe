@@ -27,11 +27,15 @@ class Game:
         return board
     
     def move(self, row, column, token):
-        if self.board[row][column] != ' ':
-            return False
+        
+        if row in range(len(self.board[0])) and column in range(len(self.board)):
+            if self.board[row][column] != ' ':
+                return False
+            else:
+                self.board[row][column] = token
+                return True
         else:
-            self.board[row][column] = token
-            return True
+            print('Invalid Move')
 
     def is_full(self):
         full = True
@@ -69,7 +73,7 @@ def main():
                                     #TODO print position on board
                                     #TODO need winner
                                     #TODO print 'Invalid move' if user types invalid coordinates instead of exiting the program
-
+                                    #TODO have it stick to the same player when they make and invalid move
     n_moves = 0
     
     while game.is_full() == False:
@@ -77,17 +81,20 @@ def main():
             player_up = player_1
         else:
             player_up = player_2
-        n_moves += 1                     
 
-        print(f'{player_up.name}\'s move')
-        x = int(input('enter x:'))
-        y = int(input('enter y:'))
-                                                         #replace with token
-        valid_move = game.move(x, y, player_up.token)  # think self.token at player_up.token
-        if valid_move: 
-            print(game)
-        else:
-            print('Invalid Move')
+        n_moves += 1       
+        valid_move = False
+
+        while valid_move is False:
+            print(f'{player_up.name}\'s move')
+            x = int(input('enter x:'))
+            y = int(input('enter y:'))
+                                                            #replace with token
+            valid_move = game.move(x, y, player_up.token)  # think self.token at player_up.token
+            if valid_move: #if it's true
+                print(game)
+            else:
+                print('Invalid Move')
     print('Game is full')    
 main()
     
